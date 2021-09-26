@@ -34,8 +34,7 @@ def title(msg):
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
 
-    chromedriver_dir = r"C:\Users\mkj46\Desktop\chromedriver.exe"
-    driver = webdriver.Chrome(chromedriver_dir, options = options)
+    dirver = load_chrome_driver()
     driver.get("https://www.youtube.com/results?search_query="+msg+"+lyrics")
     source = driver.page_source
     bs = bs4.BeautifulSoup(source, 'lxml')
@@ -85,6 +84,18 @@ def play_next(ctx):
         else:
             if not vc.is_playing():
                 client.loop.create_task(vc.disconnet())
+                
+def load_chrome_driver():
+      
+    options = webdriver.ChromeOptions()
+
+    options.binary_location = os.getenv('GOOGLE_CHROME_BIN')
+
+    options.add_argument('--headless')
+    # options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+
+    return webdriver.Chrome(executable_path=str(os.environ.get('CHROME_EXECUTABLE_PATH')), chrome_options=options)
 
 @bot.event
 async def on_ready():
@@ -92,6 +103,9 @@ async def on_ready():
     print(bot.user.name)
     print('connection was succesful')
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(">명령어"))
+    
+    if not discord.opus.is_loaded():
+        discord.opus.load_opus('opus')
 
 @bot.event
 async def on_command_error(ctx, error):
