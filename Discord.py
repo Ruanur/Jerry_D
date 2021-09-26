@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 import json
 import time
+import os
 
 bot = commands.Bot(command_prefix='>')
 client = discord.Client()
@@ -344,5 +345,6 @@ async def 명령어(ctx):
 >재생목록초기화 -> 목록에 추가된 모든 노래를 지웁니다.
 \n>재생추가 [노래] -> 노래를 대기열에 추가합니다.
 >재생삭제 [숫자] -> 대기열에서 입력한 숫자에 해당하는 노래를 지웁니다.""", color = 0x00ff00))
-    
-bot.run('ODkxMzM5OTk0NzM4ODY4MjI1.YU87Dw.vsb-9XPPrGXlw75cs47ZXkxxMyI')
+
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
