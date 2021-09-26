@@ -180,8 +180,7 @@ async def 재생(ctx, *, msg):
         YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'True'}
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
             
-        chromedriver_dir = r"C:\Users\mkj46\Desktop\chromedriver.exe"
-        driver = webdriver.Chrome(chromedriver_dir, options = options)
+        driver = load_chrome_driver()
         driver.get("https://www.youtube.com/results?search_query="+msg+"+lyrics")
         source = driver.page_source
         bs = bs4.BeautifulSoup(source, 'lxml')
@@ -248,8 +247,7 @@ async def 멜론차트(ctx):
         YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'True'}
         FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
             
-        chromedriver_dir = r"C:\Users\mkj46\Desktop\chromedriver.exe"
-        driver = webdriver.Chrome(chromedriver_dir, options = options)
+        driver = load_chrome_driver()
         driver.get("https://www.youtube.com/results?search_query=멜론차트")
         source = driver.page_source
         bs = bs4.BeautifulSoup(source, 'lxml')
