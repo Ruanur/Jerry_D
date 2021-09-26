@@ -31,9 +31,6 @@ def title(msg):
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'True'}
     FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
 
-    options = webdriver.ChromeOptions()
-    options.add_argument("headless")
-
     dirver = load_chrome_driver()
     driver.get("https://www.youtube.com/results?search_query="+msg+"+lyrics")
     source = driver.page_source
