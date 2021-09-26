@@ -22,7 +22,7 @@ client = discord.Client()
 
 user = []
 musictitle = []
-song_queue = []
+song_queue = [100000]
 musicnow = []
 
 def title(msg):
