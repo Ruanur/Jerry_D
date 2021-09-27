@@ -9,4 +9,3 @@ requests
 lxml
 urllib3
 Options
-random
