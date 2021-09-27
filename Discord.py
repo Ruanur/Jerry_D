@@ -15,6 +15,7 @@ from urllib.request import urlretrieve
 import json
 import time
 import os
+import ramdom
 
 bot = commands.Bot(command_prefix='>')
 client = discord.Client()
@@ -331,12 +332,33 @@ async def 재생목록재생(ctx):
             play(ctx)
         else:
             await ctx.send("노래가 이미 재생되고 있어용")
+            
+@bot.command()
+async def 가위바위보(ctx, user: str):  # user:str로 !game 다음에 나오는 메시지를 받아줌
+    rps_table = ['가위', '바위', '보']
+    bot = random.choice(rps_table)
+    result = rps_table.index(user) - rps_table.index(bot)  # 인덱스 비교로 결과 결정
+    if result == 0:
+        await ctx.send("누가 이겼을까요?")
+        embed = discord.Embed(title="가위바위보 결과", description=f"{user} vs {bot}  \n비겼습니다.")
+        embed.set_image(url="https://cdn.discordapp.com/attachments/704638702500184087/891942246709075998/IMG_0508.jpg")
+        await ctx.send(embed=embed)
+    elif result == 1 or result == -2:
+        await ctx.send("누가 이겼을까요?")
+        embed = discord.Embed(title="가위바위보 결과", description=f"{user} vs {bot} \n유저가 이겼습니다.")
+        embed.set_image(url="https://cdn.discordapp.com/attachments/704638702500184087/891941823277310002/a82c203715c643e0b61f6091ee20afaf.jpg")
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send("누가 이겼을까요?")
+        embed = discord.Embed(title="가위바위보 결과", description=f"{user} vs {bot}  \n제가 이겼습니다.")
+        embed.set_image(url="https://cdn.discordapp.com/attachments/704638702500184087/891941815404593152/575123b7ed92e9b97e54c8a11f3104c9.jpg")
+        await ctx.send(embed=embed)
 
 @bot.command()
 async def 명령어(ctx):
     await ctx.send(embed = discord.Embed(title='명령어',description="""
 \n>명령어 -> 제리봇의 모든 명령어를 볼 수 있습니다.
-\n>들어오기 -> 제리봇을 자신이 속한 채널로 부릅니다.
+\n>들어와 -> 제리봇을 자신이 속한 채널로 부릅니다.
 \n>나가 -> 제리봇을 자신이 속한 채널에서 내보냅니다.
 \n>URL재생 [노래링크] -> 유튜브URL를 입력하면 제리봇이 노래를 틀어줍니다.
 (목록재생에서는 사용할 수 없습니다.)
@@ -350,7 +372,8 @@ async def 명령어(ctx):
 >재생목록재생 -> 목록에 추가된 노래를 재생합니다.
 >재생목록초기화 -> 목록에 추가된 모든 노래를 지웁니다.
 \n>재생추가 [노래] -> 노래를 대기열에 추가합니다.
->재생삭제 [숫자] -> 대기열에서 입력한 숫자에 해당하는 노래를 지웁니다.""", color = 0x00ff00))
+>재생삭제 [숫자] -> 대기열에서 입력한 숫자에 해당하는 노래를 지웁니다.
+\n>가위바위보 [입력] -> 제리와 가위바위보를 합니다""", color = 0x00ff00)) 
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
