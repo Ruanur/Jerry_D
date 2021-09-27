@@ -115,7 +115,7 @@ async def 따라하기(ctx, *, text):
     await ctx.send(embed = discord.Embed(title = '따라하기', description = text, color =0x00ff00))
 
 @bot.command()
-async def 들어오기(ctx):
+async def 들어와(ctx):
     try:
         global vc
         vc = await ctx.message.author.voice.channel.connect()
