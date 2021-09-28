@@ -15,7 +15,7 @@ from urllib.request import urlretrieve
 import json
 import time
 import os
-import ramdom
+import random
 
 bot = commands.Bot(command_prefix='>')
 client = discord.Client()
