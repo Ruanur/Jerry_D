@@ -73,7 +73,7 @@ def play_next(ctx):
     if len(user) >= 1:
         if not vc.is_playing():
             del musicnow[0]
-            URL = song_queue[999999]
+            URL = song_queue[0]
             del user[0]
             del musictitle[0]
             del song_queue[0]
