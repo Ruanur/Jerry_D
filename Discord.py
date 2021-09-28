@@ -73,7 +73,7 @@ def play_next(ctx):
     if len(user) >= 1:
         if not vc.is_playing():
             del musicnow[0]
-            URL = song_queue[0]
+            URL = song_queue[999999]
             del user[0]
             del musictitle[0]
             del song_queue[0]
@@ -128,6 +128,7 @@ async def 들어와(ctx):
 @bot.command()
 async def 나가(ctx):
     try:
+        await ctx.send("넹")
         await vc.disconnect()
     except:
         await ctx.send("이미 그 채널에 없어용")
