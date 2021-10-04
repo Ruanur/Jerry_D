@@ -354,7 +354,138 @@ async def 가위바위보(ctx, user: str):  # user:str로 !game 다음에 나오
         embed = discord.Embed(title="가위바위보 결과", description=f"{user} vs {bot}  \n제가 이겼습니다.")
         embed.set_image(url="https://cdn.discordapp.com/attachments/704638702500184087/891941815404593152/575123b7ed92e9b97e54c8a11f3104c9.jpg")
         await ctx.send(embed=embed)
+        
+player1 = ""
+player2 = ""
+turn = ""
+gameOver = True
 
+board = []
+
+winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+
+@bot.command()
+async def 틱택토(ctx, p1: discord.Member, p2: discord.Member):
+    global count
+    global player1
+    global player2
+    global turn
+    global gameOver
+
+    if gameOver:
+        global board
+        board = [":white_large_square:", ":white_large_square:", ":white_large_square:",
+                 ":white_large_square:", ":white_large_square:", ":white_large_square:",
+                 ":white_large_square:", ":white_large_square:", ":white_large_square:"]
+        turn = ""
+        gameOver = False
+        count = 0
+
+        player1 = p1
+        player2 = p2
+
+        # print the board
+        line = ""
+        for x in range(len(board)):
+            if x == 2 or x == 5 or x == 8:
+                line += " " + board[x]
+                await ctx.send(line)
+                line = ""
+            else:
+                line += " " + board[x]
+
+        # determine who goes first
+        num = random.randint(1, 2)
+        if num == 1:
+            turn = player1
+            await ctx.send("<@" + str(player1.id) + ">'의 차례입니다.")
+        elif num == 2:
+            turn = player2
+            await ctx.send("<@" + str(player2.id) + ">'의 차례입니다.")
+    else:
+        await ctx.send("게임이 진행중입니다! 끝나고 다시 만드세용")
+
+@bot.command()
+async def place(ctx, pos: int):
+    global turn
+    global player1
+    global player2
+    global board
+    global count
+    global gameOver
+
+    if not gameOver:
+        mark = ""
+        if turn == ctx.author:
+            if turn == player1:
+                mark = ":regional_indicator_x:"
+            elif turn == player2:
+                mark = ":o2:"
+            if 0 < pos < 10 and board[pos - 1] == ":white_large_square:" :
+                board[pos - 1] = mark
+                count += 1
+
+                # print the board
+                line = ""
+                for x in range(len(board)):
+                    if x == 2 or x == 5 or x == 8:
+                        line += " " + board[x]
+                        await ctx.send(line)
+                        line = ""
+                    else:
+                        line += " " + board[x]
+
+                checkWinner(winningConditions, mark)
+                print(count)
+                if gameOver == True:
+                    await ctx.send(mark + " 이겼어요!")
+                elif count >= 9:
+                    gameOver = True
+                    await ctx.send("Tie!")
+
+                # switch turns
+                if turn == player1:
+                    turn = player2
+                elif turn == player2:
+                    turn = player1
+            else:
+                await ctx.send("1~9 자리에 놓으세요.")
+        else:
+            await ctx.send("당신의 차례가 아닙니다.")
+    else:
+        await ctx.send("새로운 틱택토 게임을 만드세요.")
+
+
+def checkWinner(winningConditions, mark):
+    global gameOver
+    for condition in winningConditions:
+        if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
+            gameOver = True
+
+@틱택토.error
+async def tictactoe_error(ctx, error):
+    print(error)
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("2명의 플레이어를 멘션하세요.")
+    elif isinstance(error, commands.BadArgument):
+        await ctx.send("Please make sure to mention/ping players (ie. <@688534433879556134>).")
+
+@place.error
+async def place_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("표시할 위치를 입력하세요")
+    elif isinstance(error, commands.BadArgument):
+        await ctx.send("정수를 입력하세요.")
+        
 @bot.command()
 async def 명령어(ctx):
     await ctx.send(embed = discord.Embed(title='명령어',description="""
@@ -374,7 +505,9 @@ async def 명령어(ctx):
 >재생목록초기화 -> 목록에 추가된 모든 노래를 지웁니다.
 \n>재생추가 [노래] -> 노래를 대기열에 추가합니다.
 >재생삭제 [숫자] -> 대기열에서 입력한 숫자에 해당하는 노래를 지웁니다.
-\n>가위바위보 [입력] -> 제리와 가위바위보를 합니다""", color = 0x00ff00)) 
+\n>가위바위보 [입력] -> 제리와 가위바위보를 합니다.
+>틱택토 @username @username -> 틱택토 판을 생성합니다.
+>place 1~9 -> 판에 O,X를 놓습니다.""", color = 0x00ff00)) 
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
