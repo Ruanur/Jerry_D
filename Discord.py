@@ -111,8 +111,18 @@ async def on_command_error(ctx, error):
     	await ctx.send("그런 명령어는 없어용")
 
 @bot.command()
-async def 따라하기(ctx, *, text):
-    await ctx.send(embed = discord.Embed(title = '따라하기', description = text, color =0x00ff00))
+async def 코(ctx):
+    await ctx.send("@정우렁")
+    
+@bot.command()
+async def 도구년(ctx):
+    await ctx.send("포션 하나 남았어요. 우마이!!!")
+
+@bot.command()
+async def 랄(ctx):
+    embed = discord.Embed(title="솜주먹")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927653196623667210/1577089726860.jpg")
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def 들어와(ctx):
