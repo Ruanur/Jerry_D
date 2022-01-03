@@ -112,17 +112,49 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def 코(ctx):
-    await ctx.send("@정우렁")
+    await ctx.send("큰 @정우렁")
     
 @bot.command()
 async def 도구년(ctx):
-    await ctx.send("포션 하나 남았어요. 우마이!!!")
+    await ctx.send("???: 음식 맛이 어떠세요? 우마이!!!")
+    await ctx.send("???: 저 죽었어요. 화이팅 화이팅!")
 
 @bot.command()
 async def 랄(ctx):
     embed = discord.Embed(title="솜주먹")
     embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927653196623667210/1577089726860.jpg")
     await ctx.send(embed=embed)
+    
+@bot.command()
+async def 민정환(ctx):
+    embed = discord.Embed(title="@고인")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927655639830917120/o0698040013797061164.jpg")
+    await ctx.send(embed=embed)
+    
+@bot.command()
+async def LiteArc(ctx):
+    embed = discord.Embed(title="탈출")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927656771475099648/d1f1c32425418469cba7e0d77849cd77.png")
+    await ctx.send(embed=embed)    
+
+@bot.command()
+async def 실압고(ctx):
+    embed = discord.Embed(title="김 실장님")
+    embed.set_image(url=https://cdn.discordapp.com/attachments/647860626592497674/927658427021406289/download.jpg")
+    await ctx.send(embed=embed)  
+    
+@bot.command()
+async def 영바(ctx):
+    await ctx.send("보")
+    
+@bot.command()
+async def 점(ctx):
+    await ctx.send("토 수류탄")
+    
+@bot.command()
+async def 유랑단(ctx):
+    await ctx.send("길드원분들 모두 사랑합니다 :)")
+ 
 
 @bot.command()
 async def 들어와(ctx):
@@ -517,6 +549,7 @@ async def 명령어(ctx):
 >재생삭제 [숫자] -> 대기열에서 입력한 숫자에 해당하는 노래를 지웁니다.
 \n>가위바위보 [입력] -> 제리와 가위바위보를 합니다.
 >틱택토 @username @username -> 틱택토 판을 생성합니다.
+>이스터에그 ex) >command
 >place 1~9 -> 판에 O,X를 놓습니다.""", color = 0x00ff00)) 
 
 access_token = os.environ["BOT_TOKEN"]
