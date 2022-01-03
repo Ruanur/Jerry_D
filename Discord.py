@@ -112,7 +112,7 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def 코(ctx):
-    await ctx.send("큰 @정우렁")
+    await ctx.send("@정우렁")
     
 @bot.command()
 async def 도구년(ctx):
