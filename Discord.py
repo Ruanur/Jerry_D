@@ -140,7 +140,7 @@ async def LiteArc(ctx):
 @bot.command()
 async def 실압고(ctx):
     embed = discord.Embed(title="김 실장님")
-    embed.set_image(url=https://cdn.discordapp.com/attachments/647860626592497674/927658427021406289/download.jpg")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927662813466464337/qqq.jpg")
     await ctx.send(embed=embed)  
     
 @bot.command()
