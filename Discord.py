@@ -111,8 +111,8 @@ async def on_command_error(ctx, error):
     	await ctx.send("그런 명령어는 없어용")
 
 @bot.command()
-async def 코(ctx):
-    await ctx.send("@정우렁")
+async def 짱코(ctx):
+    await ctx.send("")
     
 @bot.command()
 async def 도구년(ctx):
