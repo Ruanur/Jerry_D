@@ -105,6 +105,10 @@ async def on_ready():
     if not discord.opus.is_loaded():
         discord.opus.load_opus('opus')
 
+@bot.command()
+async def 따라하기(ctx, *, text):
+    await ctx.send(embed = discord.Embed(title = '따라하기', description = text, color =0x00ff00))
+
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
@@ -112,7 +116,7 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def 짱코(ctx):
-    await ctx.send("")
+    await ctx.send("정우렁: 코 크면 다다.")
     
 @bot.command()
 async def 도구년(ctx):
