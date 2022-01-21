@@ -122,17 +122,26 @@ async def 정우렁(ctx):
     
 @bot.command()
 async def 도구년(ctx):
-    await ctx.send("???: 음식 맛이 어떠세요? 우마이!!!")
-    await ctx.send("???: 저 죽었어요. 화이팅 화이팅!")
+    await ctx.send("우마이.")
 
 @bot.command()
 async def 랄(ctx):
-    embed = discord.Embed(title="솜주먹")
+    embed = discord.Embed(title="솜프")
     embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927653196623667210/1577089726860.jpg")
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def 랄랄(ctx):
+    embed = discord.Embed(title="솜주먹")
     embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933986843710615552/B983CDFC-BF9B-43DF-A083-360F4196DEB8.jpg")
+    await ctx.send(embed=embed)
+
+@bot.command()
+async def 솜주먹(ctx):
+    embed = discord.Embed(title="유 씨")
     embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933988151679123456/IMG_1054.jpg")
     await ctx.send(embed=embed)
-    
+
 @bot.command()
 async def 민정환(ctx):
     embed = discord.Embed(title="@고인")
