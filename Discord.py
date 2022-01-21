@@ -115,8 +115,10 @@ async def on_command_error(ctx, error):
     	await ctx.send("그런 명령어는 없어용")
 
 @bot.command()
-async def 짱코(ctx):
-    await ctx.send("정우렁: 코 크면 다다.")
+async def 정우렁(ctx):
+    embed = discord.Embed(title="짱코")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/933997222780092437/02dd43d5-65b5-4831-9c8d-5af10956236c.jpg")
+    await ctx.send(embed=embed)
     
 @bot.command()
 async def 도구년(ctx):
@@ -127,6 +129,8 @@ async def 도구년(ctx):
 async def 랄(ctx):
     embed = discord.Embed(title="솜주먹")
     embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927653196623667210/1577089726860.jpg")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933986843710615552/B983CDFC-BF9B-43DF-A083-360F4196DEB8.jpg")
+    embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933988151679123456/IMG_1054.jpg")
     await ctx.send(embed=embed)
     
 @bot.command()
