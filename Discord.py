@@ -161,19 +161,6 @@ async def 실압고(ctx):
     await ctx.send(embed=embed)  
     
 @bot.command()
-async def 영바(ctx):
-    await ctx.send("보")
-    
-@bot.command()
-async def 점(ctx):
-    await ctx.send("토 수류탄")
-    
-@bot.command()
-async def 유랑단(ctx):
-    await ctx.send("길드원분들 모두 사랑합니다 :)")
- 
-
-@bot.command()
 async def 들어와(ctx):
     try:
         global vc
