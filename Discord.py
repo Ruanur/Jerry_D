@@ -113,52 +113,6 @@ async def 따라하기(ctx, *, text):
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
     	await ctx.send("그런 명령어는 없어용")
-
-@bot.command()
-async def 정우렁(ctx):
-    embed = discord.Embed(title="짱코")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/933997222780092437/02dd43d5-65b5-4831-9c8d-5af10956236c.jpg")
-    await ctx.send(embed=embed)
-    
-@bot.command()
-async def 도구년(ctx):
-    await ctx.send("우마이.")
-
-@bot.command()
-async def 랄(ctx):
-    embed = discord.Embed(title="솜프")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927653196623667210/1577089726860.jpg")
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def 랄랄(ctx):
-    embed = discord.Embed(title="솜주먹")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933986843710615552/B983CDFC-BF9B-43DF-A083-360F4196DEB8.jpg")
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def 솜주먹(ctx):
-    embed = discord.Embed(title="유 씨")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/823415988015202334/933988151679123456/IMG_1054.jpg")
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def 민정환(ctx):
-    embed = discord.Embed(title="@고인")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927655639830917120/o0698040013797061164.jpg")
-    await ctx.send(embed=embed)
-    
-@bot.command()
-async def LiteArc(ctx):
-    embed = discord.Embed(title="탈출")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927656771475099648/d1f1c32425418469cba7e0d77849cd77.png")
-    await ctx.send(embed=embed)    
-
-@bot.command()
-async def 실압고(ctx):
-    embed = discord.Embed(title="김 실장님")
-    embed.set_image(url="https://cdn.discordapp.com/attachments/647860626592497674/927662813466464337/qqq.jpg")
-    await ctx.send(embed=embed)  
     
 @bot.command()
 async def 들어와(ctx):
